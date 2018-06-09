@@ -33,7 +33,7 @@ def checkpali(st):
 def dp(st):
     maxi = 1
     lt = len(st)
-    table = [[0] * lt] * lt
+    table = [[False for x in range(lt)] for y in range(lt)]
     for x in range(lt):
         table[x][x] = True
     for x in range(lt - 1):
@@ -49,8 +49,37 @@ def dp(st):
 
     return maxi
 
+# Reduces the space complexity by using less space 0(1)
 
-print brutus("abc"), dp("abc")
-print brutus("dabcd"), dp("dabcd")
-print brutus("abccba"), dp("abccba")
-print brutus("daaab"), dp("daaab")
+
+def space(st):
+    maxlen = 1
+    for c in range(1, len(st)):
+        # Consider even palindromes
+        low = c - 1
+        high = c
+
+        while low >= 0 and high < len(st) and st[low] == st[high]:
+            if high - low + 1 > maxlen:
+                maxlen = high - low + 1
+
+            low -= 1
+            high += 1
+
+        # Then consider odd palindromes
+        low = c - 1
+        high = c + 1
+        while low >= 0 and high < len(st) and st[low] == st[high]:
+            if high - low + 1 > maxlen:
+                maxlen = high - low + 1
+
+            low -= 1
+            high += 1
+
+    return maxlen
+
+
+print brutus("abc"), dp("abc"), space("abc")
+print brutus("dabcd"), dp("dabcd"), space("dabcd")
+print brutus("abccba"), dp("abccba"), space("abccba")
+print brutus("daaab"), dp("daaab"), space("daaab")
