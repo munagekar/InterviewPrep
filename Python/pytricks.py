@@ -1,8 +1,7 @@
 '''
 Python 3
 '''
-
-import itertools
+from __future__ import print_function
 import operator
 
 # List and Tupple Stuff
@@ -10,36 +9,40 @@ import operator
 # Reverse a List
 a = [1, 2, 3]
 print(a[::-1])
+# [3, 2, 1]
 
 # Remove Duplicates List
 a = [1, 2, 3, 3, 2, 2, 2]
 a = list(set(a))
 print(a)
+# [1, 2, 3]
 
 # Swap Numbers
 a = 1
 b = 2
 a, b = b, a
 print(a, b)
+# 2 1
 
 # Unpacking
 first, *mid, end = [1, 2, 3, 4]
 print(mid)
+# [2, 3]
 
 # zip
 a = [1, 2, 3]
 b = [4, 5, 5]
 ab = [z for z in zip(a, b)]
 print(ab)
+# [(1, 4), (2, 5), (3, 5)]
 
 
-# itertools
 
-# Combinations
-print(list(itertools.combinations([1, 2, 3, 4, 5], 3)))
-# Permutations
-print(list(itertools.permutations([1, 2, 3], 2)))
-# Accumulate
-print(list(itertools.accumulate([1, 2, 3], operator.add)))
-# Cartesian Product
-print(list(itertools.product([1, 2, 3, 4], [5, 6])))
+
+
+
+
+
+
+
+
